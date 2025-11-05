@@ -282,6 +282,11 @@ td {
   background-color: #FDE3E2;
 }
 
+#form_desc .form_desc_inner {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
 #form_desc p {
   text-align: left;
 }
@@ -326,7 +331,7 @@ td {
 
 div.attention_text {
   width: 500px;
-  margin: 1rem 0 0 33rem;
+  margin-top: 1rem;
 }
 
 #QandA {
