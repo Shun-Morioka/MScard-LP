@@ -26,9 +26,10 @@ h1 img {
 
 /* ここから申込ボタン（大） */
 #g_applyBtn {
+  transform: translate(-50%, -50%);
   position: fixed;
-  top: 53rem;
-  left: 13%;
+  top: 90%;
+  left: 50%;
   z-index: 100;
 }
 
