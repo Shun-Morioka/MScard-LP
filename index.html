@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="./css/destyle.css">
   <link rel="stylesheet" href="./css/style.css">
   <title>【公式】エムエスカード｜学生用｜学生さんに一番選ばれているカード</title>
-  <style>
-  </style>
+
 </head>
 
 <body>
@@ -25,7 +24,7 @@
     <div class="content">
       <img class="content_img" src="./images/award.png" width="200" height="142" alt="x">
       <p class="content_txt">
-        ランク.comクレジットカードカテゴリ<br>
+        ランク.comクレジットカードカテゴリー<br>
         人気ランキング 2024年上半期 一般カード部門第1位<br>
         <small>(集計期間：2024年4月1日～2024年8月31日)</small>
       </p>
@@ -40,7 +39,7 @@
   </div>
 
 
-  <nav class="global_Nav">
+  <nav id="global_Nav">
     <ul>
       <li><a href="#content_wrapper_01">セキュリティ</a></li>
       <li><a href="#content_wrapper_02">ポイント</a></li>
@@ -154,22 +153,24 @@
 
   <section id="form_desc">
     <h2>お申込の流れ</h2>
-    <div class="content_01">
-      <p>&#9312;申込情報を入力</p>
-      <p>&#9313;お支払い口座の登録</p>
-      <p>&#9314;入会審査</p>
-      <p>&#9315;プラスチック製のカードをお届け！</p>
-    </div>
-    <div class="content_02">
-      <p><span>郵送を待たずにすぐ使える！</span><br><br>審査が完了すると、すぐにクレジットカード番号や有効期限が確認でき、インターネット上でのお買い物などに利用できます。<br><br>
-        <small>※後日郵送で口座設定をする方法でお申し込みされた方は、ご利用開始は審査完了後お手元にカードが到着してからとなります。</small>
-      </p>
-    </div>
-    <div class="attention_text">
-      <p>
-        <small>※ご利用にはクレジットカードの審査があります。<br>
-          ※プラスチック製のカードは、お申し込みから約1週間でお手元にお届けします。</small>
-      </p>
+    <div class="form_desc_inner">
+      <div class="content_01">
+        <p>&#9312;申込情報を入力</p>
+        <p>&#9313;お支払い口座の登録</p>
+        <p>&#9314;入会審査</p>
+        <p>&#9315;プラスチック製のカードをお届け！</p>
+      </div>
+      <div class="content_02">
+        <p><span>郵送を待たずにすぐ使える！</span><br><br>審査が完了すると、すぐにクレジットカード番号や有効期限が確認でき、インターネット上でのお買い物などに利用できます。<br><br>
+          <small>※後日郵送で口座設定をする方法でお申し込みされた方は、ご利用開始は審査完了後お手元にカードが到着してからとなります。</small>
+        </p>
+      </div>
+      <div class="attention_text">
+        <p>
+          <small>※ご利用にはクレジットカードの審査があります。<br>
+            ※プラスチック製のカードは、お申し込みから約1週間でお手元にお届けします。</small>
+        </p>
+      </div>
     </div>
     <button class="botton_base" name="button" onclick="x">エムエスカードのお申し込みはこちら</button>
   </section>
@@ -201,6 +202,28 @@
     </nav>
     <small>&copy; MS Card Corporation</small>
   </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      $('#global_Nav a').click(function(e) {
+        e.preventDefault();//デフォルトのジャンプをキャンセル
+
+        //クリックしたリンクのhrefを取得
+        var target = $($(this).attr('href'));
+
+        //ターゲットのページ上の位置を取得
+        var position = target.offset().top;
+
+        $('html, body').animate({ scrollTop: position },600, 'swing');
+      });
+    });
+
+  </script>
+
+
 </body>
 
 </html>
