@@ -1,0 +1,662 @@
+@charset "utf-8";
+
+/* =========================================================
+   LP固有スタイルのみ（BEM移行 + レスポンシブ前提の安全化）
+   ※destyle.css（リセット）は含めない前提
+   ========================================================= */
+
+:root {
+  --container: 1130px;
+  --gutter: 16px;
+}
+
+/* ページ基礎（LP用に必要な範囲だけ） */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+/* 画像の基本（隙間・はみ出し対策） */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   ヒーロー（アイキャッチ）
+   ========================================================= */
+.lp-hero__title {
+  line-height: 0;
+  margin: 0;
+}
+
+.lp-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   追従CTA（申込ボタン）
+   - top:95.6% は端末差で隠れるので bottom 固定に変更
+   ========================================================= */
+.lp-cta-float {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.lp-cta-float:hover {
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.lp-cta-float__link {
+  display: block;
+  width: 900px;
+  max-width: 900px;
+}
+
+.lp-cta-float__link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   アワード
+   ========================================================= */
+.lp-award {
+  background-color: #F1FAFE;
+}
+
+.lp-award__inner {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  line-height: 3rem;
+  padding: 5rem 0;
+}
+
+.lp-award__text {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: auto 0;
+}
+
+.lp-award__note {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+/* =========================================================
+   上部キャンペーン（ロゴ）
+   ========================================================= */
+.lp-top-campaign {
+  padding-bottom: 5rem;
+  background-color: #F1FAFE;
+}
+
+.lp-top-campaign__inner {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lp-top-campaign__image {
+  max-width: 77.9rem;
+  width: 100%;
+  height: auto;
+}
+
+.lp-top-campaign__image:hover {
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+/* =========================================================
+   グローバルナビ
+   - itemの width:230rem を撤廃
+   - PCは横並びを維持しつつ、幅は伸縮させる
+   ========================================================= */
+.global-nav__list {
+  display: flex;
+  padding: 18px 130px;
+  background: linear-gradient(90deg, #F67474 0%, #F8B4B4 100%);
+  list-style-type: none;
+}
+
+.global-nav__item {
+  flex: 1;
+  /* 追加：均等割り */
+  min-width: 0;
+  /* 追加：はみ出し抑止 */
+  height: 6.6rem;
+  text-align: center;
+  color: #fff;
+  border-left: 1px solid #fff;
+}
+
+.global-nav__item:last-child {
+  border-right: 1px solid #fff;
+}
+
+.global-nav__link {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-top: 1.7rem;
+}
+
+.global-nav__link::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  background-image: url(../images/arrow_02.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1.4rem;
+  height: 0.9rem;
+  margin-top: 0.8rem;
+  transition: transform 0.5s ease;
+}
+
+.global-nav__item:hover {
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.global-nav__link:hover::after {
+  transform: translate(0, 1.2rem);
+}
+
+/* =========================================================
+   機能セクション
+   ========================================================= */
+.feature--blue {
+  background-color: #F1FAFE;
+}
+
+.feature--pink {
+  background-color: #FDE3E2;
+}
+
+.feature {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.feature__title-sub {
+  font-size: 2.4rem;
+}
+
+.feature__title {
+  font-size: 4.0rem;
+  font-weight: bold;
+  line-height: 45px;
+}
+
+.feature__visual-image {
+  margin-top: 40px;
+  border-radius: 15px;
+}
+
+.feature__lead {
+  font-size: 1.6rem;
+  line-height: 30px;
+  margin-top: 40px;
+}
+
+.feature__lead-strong {
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #2455AA;
+}
+
+.feature__content-image {
+  margin-top: 40px;
+  border-radius: 15px;
+  max-width: 100%;
+}
+
+/* =========================================================
+   ボタン
+   - 横padding固定(155px)はレスポンシブで破綻するので安全化
+   ========================================================= */
+.btn {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 15px 24px;
+  /* 修正：固定155pxを撤廃 */
+  margin-top: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: min(520px, calc(100% - (var(--gutter) * 2)));
+  /* 追加：可変幅 */
+}
+
+.btn--outline {
+  color: #3895FE;
+  background-color: #F1FAFE;
+  border: 2px solid #3895FE;
+}
+
+.btn--outline:hover {
+  background-color: #3895FE;
+  color: #fff;
+  transition: 0.5s;
+}
+
+/* hr の見た目を安定 */
+hr {
+  color: #fff;
+}
+
+/* =========================================================
+   お得なキャンペーン
+   - box幅を可変に変更
+   ========================================================= */
+.campaign {
+  background-color: #FEFFD1;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.campaign__title {
+  font-size: 4.0rem;
+  font-weight: bold;
+  line-height: 45px;
+}
+
+.campaign-box {
+  margin: 40px auto;
+  width: min(980px, calc(100% - (var(--gutter) * 2)));
+  /* 修正：固定→可変 */
+  border-radius: 15px;
+}
+
+.campaign-box__head,
+.campaign-box__body {
+  padding: 40px 0;
+}
+
+.campaign-box__text {
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+
+.campaign-box__image:hover {
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.campaign-box--grad-1 {
+  background: linear-gradient(270deg, #FAD0C4 0%, #FFD1FF 100%);
+}
+
+.campaign-box--grad-2 {
+  background: linear-gradient(90deg, #B1EEFF 0%, #A3C9FE 100%);
+  margin-bottom: 0;
+}
+
+.campaign-box__rule {
+  background-color: #fff;
+  height: 1px;
+  border: none;
+}
+
+/* =========================================================
+   基本情報
+   - テーブルと注釈幅を可変に変更
+   ========================================================= */
+.basic-info {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #F1FAFE;
+}
+
+.basic-info__title-sub {
+  font-size: 2.4rem;
+}
+
+.basic-info__cards {
+  margin: 50px 0;
+}
+
+.basic-info__table {
+  width: min(var(--container), calc(100% - (var(--gutter) * 2)));
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.basic-info__table-inner {
+  width: 100%;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+.basic-info__notes {
+  width: min(var(--container), calc(100% - (var(--gutter) * 2)));
+  margin: 50px auto 0;
+  text-align: justify;
+  font-size: 1.6rem;
+  line-height: 20px;
+}
+
+.basic-info__table-inner tr {
+  border-bottom: 2px solid #F1FAFE;
+}
+
+.basic-info__table-inner th {
+  width: 170px;
+}
+
+.basic-info__table-inner th,
+.basic-info__table-inner td {
+  background-color: #fff;
+  border-right: 2px solid #F1FAFE;
+  padding: 20px 50px 20px 20px;
+  line-height: 20px;
+}
+
+/* =========================================================
+   お申込の流れ
+   - 固定幅を可変に変更
+   ========================================================= */
+.flow {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #FDE3E2;
+}
+
+.flow__inner {
+  max-width: 70rem;
+  margin: 0 auto;
+  width: min(700px, calc(100% - (var(--gutter) * 2)));
+}
+
+.flow p {
+  text-align: left;
+}
+
+.flow-steps {
+  margin-top: 50px;
+  width: 100%;
+  /* 修正：固定→可変 */
+}
+
+.flow-steps__item {
+  font-size: 2.0rem;
+  font-weight: bold;
+  line-height: 2.6;
+  /* 修正：100px固定を撤廃 */
+}
+
+.flow-card {
+  width: 100%;
+  /* 修正：固定→可変 */
+  margin: 0 auto;
+  border: 1px solid #000;
+  padding: 20px 30px;
+}
+
+.flow-card__text {
+  font-size: 1.6rem;
+}
+
+.flow-card__note {
+  font-size: 1.2rem;
+}
+
+.flow-card__strong {
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+.flow-attention {
+  width: 100%;
+  /* 修正：固定→可変 */
+  margin-top: 1rem;
+}
+
+/* =========================================================
+   FAQ
+   - リスト幅を可変に変更
+   ========================================================= */
+.faq {
+  padding: 100px 0;
+  text-align: center;
+  background-color: #F1FAFE;
+}
+
+.faq__list {
+  width: min(54rem, calc(100% - (var(--gutter) * 2)));
+  /* 修正：固定→可変 */
+  text-align: left;
+  margin: 50px auto 0;
+  list-style-type: none;
+}
+
+.faq__item {
+  padding: 15px;
+  border-bottom: 1px solid #000;
+  list-style-type: none;
+}
+
+.faq__item:hover {
+  color: #3895FE;
+  transition: 0.4s;
+}
+
+.faq__link {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #000;
+}
+
+.faq__link::after {
+  content: "";
+  background-image: url(../images/arrow.svg);
+  width: 18px;
+  height: 16px;
+  background-position: center;
+  float: right;
+}
+
+.faq__link:hover::after {
+  content: "";
+  background-image: url(../images/Arrow_Blue.svg);
+  width: 18px;
+  height: 16px;
+  background-position: center;
+  float: right;
+}
+
+/* =========================================================
+   フッター
+   ========================================================= */
+.lp-footer {
+  text-align: center;
+  border-top: 3px solid #FFD1FF;
+  padding: 20px 0 84px 0;
+  background-color: #F1FAFD;
+}
+
+.lp-footer__important-link {
+  color: #000;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+.lp-footer__important-link:hover {
+  color: #3895FE;
+  transition: 0.2s;
+}
+
+.lp-footer__nav {
+  margin: 25px 0;
+}
+
+.lp-footer__list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style-type: none;
+  flex-wrap: wrap;
+  /* 追加：狭い幅で折返し */
+}
+
+.lp-footer__item {
+  list-style-type: none;
+}
+
+.lp-footer__link {
+  color: #000;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.lp-footer__link:hover {
+  color: #3895FE;
+  transition: 0.2s;
+}
+
+.lp-footer__copy {
+  display: block;
+  padding: 15px 0;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: #606060;
+}
+
+/* =========================================================
+   ここからブレイクポイント（最小限）
+   ========================================================= */
+@media (max-width: 1024px) {
+  .global-nav__list {
+    padding: 14px 24px;
+  }
+
+  .feature,
+  .campaign,
+  .basic-info,
+  .flow,
+  .faq {
+    padding: 72px 0;
+  }
+}
+
+@media (max-width: 930px) {
+  .lp-cta-float__link {
+    width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 14px;
+  }
+
+  .feature__title,
+  .campaign__title {
+    font-size: 2.8rem;
+    line-height: 1.25;
+  }
+
+  .feature__title-sub {
+    font-size: 1.6rem;
+  }
+
+  .lp-award__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 0;
+  }
+
+  .lp-award__text {
+    margin: 0;
+    font-size: 1.8rem;
+    line-height: 1.6;
+  }
+
+  .campaign-box__text {
+    font-size: 2.2rem;
+    line-height: 1.35;
+  }
+
+  /* ナビは2列折返し */
+  .global-nav__list {
+    flex-wrap: wrap;
+    padding: 12px var(--gutter);
+  }
+
+  .global-nav__item {
+    flex: none;
+    width: 50%;
+    height: auto;
+    border-right: 1px solid #fff;
+  }
+
+  .global-nav__link {
+    padding: 12px 8px;
+  }
+
+  /* テーブルの余白を縮める */
+  .basic-info__table-inner th,
+  .basic-info__table-inner td {
+    padding: 14px 14px;
+    line-height: 1.6;
+  }
+
+  .flow-card {
+    padding: 16px 16px;
+  }
+}
+
+@media (max-width: 730px) {
+  .lp-cta-float__link {
+    width: 500px;
+  }
+}
+
+@media (max-width: 530px) {
+  .lp-cta-float__link {
+    width: 330px;
+  }
+}
+
+@media (max-width: 375px) {
+
+  .feature__title,
+  .campaign__title {
+    font-size: 2.4rem;
+  }
+
+  .campaign-box__text {
+    font-size: 2.0rem;
+  }
+
+  .lp-award__text {
+    font-size: 1.6rem;
+  }
+}
